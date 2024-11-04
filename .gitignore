@@ -1,42 +1,60 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# Logs
+logs
+*.log
+npm-debug.log*
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+# Dependency directories
+node_modules/
+bower_components/
 
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
+# Output directories
+dist/
+tmp/
+out-tsc/
 
-# IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
-
-# Miscellaneous
-/.angular/cache
+# Angular specific
+.angular/
+.build/
 .sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+*.ngsummary.json
+*.ngfactory.ts
+*.scssc
+
+# Environment variables
+*.env
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
 
 # System files
 .DS_Store
 Thumbs.db
+
+# Optional npm cache directory
+.npm/
+
+# Compiled files
+*.dll
+*.exe
+*.so
+*.dylib
+
+# Compiled Java classes
+*.class
+
+# Static site
+site
+
+# Misc
+*.swp
+*~
+.project
+.workspace
+.metadata
+*.bak
+*.orig
+*.rej
+*.sw
