@@ -254,3 +254,8 @@ For additional commands and help on Angular CLI, use:
 ```bash
 ng help
 ```
+
+<br><br><br><br>
+<br><br><br><br>
+
+Contact: misty.ages@gmail.com
