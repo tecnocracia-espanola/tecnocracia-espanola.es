@@ -1,8 +1,42 @@
-<div class="app-info">
-    <h1>{{ title }}</h1>
-    <p>Running on Angular version: {{ angularVersion }}</p>
-    <p>Today's date: {{ currentDate | date:'fullDate' }}</p>
-    <p>Current time: {{ currentDate | date:'shortTime' }}</p>
+<div class="app-info container d-flex align-items-center justify-content-center" style="height: 10vh;">
+  <div class="row w-100 text-center">
+    <div class="col-md-12 d-flex flex-column align-items-center">
+      <div class="d-flex align-items-center">
+        <img src="../assets/logo.svg" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
+        <h3 style="margin: 0;">{{ title }}</h3>
+      </div>
+      <p style="margin: 5px 0 0; font-size: 0.9rem; color: brown;">
+        <strong><b>El logo y el título están a la espera de votación para su cambio, es algo provisional</b></strong>
+      </p>
+    </div>
+    <!-- <div class="col-md-3 d-flex flex-column align-items-center">
+      <p>Angular version: {{ angularVersion }}</p>
+    </div>
+    <div class="col-md-3 d-flex flex-column align-items-center">
+      <p>Date: {{ currentDate | date:'fullDate' }}</p>
+    </div>
+    <div class="col-md-3 d-flex flex-column align-items-center">
+      <p>Time: {{ currentDate | date:'shortTime' }}</p>
+    </div> -->
+  </div>
 </div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="container-fluid ">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/home" routerLinkActive="active">Nuestra propuesta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/portal-logs" routerLinkActive="active">Registros de la web</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/examples" routerLinkActive="active">Ejemplos de interfaz</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <router-outlet></router-outlet>

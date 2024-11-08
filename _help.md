@@ -4,6 +4,12 @@ scp -r C:\Users\PC\Desktop\Technocracy\Code\tecnocracia-espanola\dist\tecnocraci
 
 z8FRUP353nasBb
 
+rd /s /q node_modules && del /f /q package-lock.json
+
+    rmdir /s /q node_modules
+    del package-lock.json
+    npm cache clean --force
+
 rm -rf .angular/cache
 ng serve
 

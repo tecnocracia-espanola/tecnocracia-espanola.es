@@ -1,13 +1,14 @@
-import { CommonModule } from '@angular/common';
+// app.component.ts
 import { Component, VERSION } from '@angular/core';
-import { RouterModule } from '@angular/router';  // Import RouterModule
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [CommonModule, RouterModule] 
+  standalone: true,
+  imports: [CommonModule, RouterModule], 
 })
 export class AppComponent {
   title = 'Tecnocracia Española';

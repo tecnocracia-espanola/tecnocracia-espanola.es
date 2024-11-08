@@ -1,23 +1,15 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { PortalLogsComponent } from './pages/system/portal-logs/portal-logs.component';
+import { NgModule } from '@angular/core';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap'; 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    PortalLogsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    RouterModule 
+    NgbTooltipModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: []
 })
+
 export class AppModule { }
