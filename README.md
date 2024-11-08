@@ -1,27 +1,261 @@
-# TecnocraciaEspanola
+# Manual de Tecnocracia Española
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+Este documento sirve como una guía completa para ejecutar la aplicación Angular **Tecnocracia Española** en tu computadora.
 
-## Development server
+## Prerrequisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Antes de comenzar, asegúrate de tener instalados los siguientes componentes:
 
-## Code scaffolding
+- [Node.js y npm](https://nodejs.org/)
+- [Angular CLI](https://angular.dev/cli)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Descarga del Proyecto
 
-## Build
+Sigue estos pasos para descargar y configurar el proyecto:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clona el repositorio:
 
-## Running unit tests
+    ```bash
+    git clone https://github.com/tecnocracia-espanola/tecnocracia-espanola.es.git
+    ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Accede al directorio del proyecto:
 
-## Running end-to-end tests
+    ```bash
+    cd tecnocracia-espanola.es
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. Instala las dependencias:
 
-## Further help
+    ```bash
+    npm install
+    ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Servidor de Desarrollo
+
+Para ejecutar el servidor de desarrollo:
+
+1. Inicia el servidor:
+
+    ```bash
+    ng serve
+    ```
+
+2. Abre tu navegador y navega a:
+
+    ```
+    http://localhost:4200/
+    ```
+
+## Creación de Elementos de Código
+
+Usa los siguientes comandos para generar elementos de Angular:
+
+- Generar un nuevo componente:
+
+    ```bash
+    ng generate component nombre-componente
+    ```
+
+- Generar otros elementos (directiva, pipe, servicio, etc.):
+
+    ```bash
+    ng generate directive|pipe|service|class|guard|interface|enum|module nombre-elemento
+    ```
+
+## Compilación del Proyecto
+
+Para compilar el proyecto para producción:
+
+1. Ejecuta el comando de compilación:
+
+    ```bash
+    ng build
+    ```
+
+2. Los artefactos de compilación se almacenarán en el directorio `dist/`.
+
+## Ejecución de Pruebas Unitarias
+
+Ejecuta las pruebas unitarias usando Karma con:
+
+```bash
+ng test
+```
+
+## Ejecución de Pruebas End-to-End
+
+Para ejecutar pruebas end-to-end:
+
+1. Asegúrate de tener instalado un paquete adecuado para pruebas e2e.
+2. Ejecuta las pruebas e2e:
+
+    ```bash
+    ng e2e
+    ```
+
+## Subir Código al Repositorio
+
+Para subir tus cambios a GitHub:
+
+1. Prepara los cambios:
+
+    ```bash
+    git add .
+    ```
+
+2. Realiza un commit de tus cambios:
+
+    ```bash
+    git commit -m "Mensaje de tu commit"
+    ```
+
+3. Sube los cambios a la rama principal:
+
+    ```bash
+    git push origin main
+    ```
+
+## Ayuda Adicional
+
+Para comandos adicionales y ayuda sobre Angular CLI, usa:
+
+```bash
+ng help
+```
+
+
+<br><br><br><br>
+<br><br><br><br>
+
+
+# Tecnocracia Española Manual (English)
+
+This document serves as a comprehensive guide to running the **Tecnocracia Española** Angular application on your computer.
+
+## Prerequisites
+
+Before starting, ensure the following are installed on your system:
+
+- [Node.js and npm](https://nodejs.org/)
+- [Angular CLI](https://angular.dev/cli)
+
+## Downloading the Project
+
+Follow these steps to download and set up the project:
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/tecnocracia-espanola/tecnocracia-espanola.es.git
+    ```
+
+2. Navigate into the project directory:
+
+    ```bash
+    cd tecnocracia-espanola.es
+    ```
+
+3. Install the dependencies:
+
+    ```bash
+    npm install
+    ```
+
+## Development Server
+
+To run the development server:
+
+1. Start the server:
+
+    ```bash
+    ng serve
+    ```
+
+2. Open your browser and navigate to:
+
+    ```
+    http://localhost:4200/
+    ```
+
+## Code Scaffolding
+
+Use the following commands to generate Angular elements:
+
+- Generate a new component:
+
+    ```bash
+    ng generate component component-name
+    ```
+
+- Generate other elements (directive, pipe, service, etc.):
+
+    ```bash
+    ng generate directive|pipe|service|class|guard|interface|enum|module element-name
+    ```
+
+## Building the Project
+
+To build the project for production:
+
+1. Execute the build command:
+
+    ```bash
+    ng build
+    ```
+
+2. The build artifacts will be stored in the `dist/` directory.
+
+## Running Unit Tests
+
+Run unit tests using Karma with:
+
+```bash
+ng test
+```
+
+## Running End-to-End Tests
+
+To execute end-to-end tests:
+
+1. Ensure an appropriate e2e testing package is installed.
+2. Run the e2e tests:
+
+    ```bash
+    ng e2e
+    ```
+
+## Pushing Code to the Repository
+
+To push your changes to GitHub:
+
+1. Stage your changes:
+
+    ```bash
+    git add .
+    ```
+
+2. Commit your changes:
+
+    ```bash
+    git commit -m "Your commit message"
+    ```
+
+3. Push the changes to the main branch:
+
+    ```bash
+    git push origin main
+    ```
+
+## Further Help
+
+For additional commands and help on Angular CLI, use:
+
+```bash
+ng help
+```
+
+<br><br><br><br>
+<br><br><br><br>
+
+Contact: misty.ages@gmail.com
