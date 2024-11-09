@@ -103,24 +103,6 @@ To push changes to the repository:
 ```bash
 git status
 git add .
-git commit -m "Name briefly things you have changed"
+git commit -m "XXXXXXXXXXXXXXXXXXXXX Name briefly things you have changed XXXXXXXXXXXXXXXXXXXXX"
 git push origin main
 ```
-
-<br>
-<br>
-<br>
-
-### Organized Sections
-- **Directory Listing**: Provides a command to list all files and directories.
-- **File Transfer**: Details the `scp` command for secure file copying.
-- **Node Modules Cleanup**: Instructions for removing and resetting Node.js dependencies.
-- **Angular Cache**: Explains how to clear Angular's cache and run the development server.
-- **Nginx Management**: Commands to manage the Nginx web server.
-- **System Updates**: Guides on updating the system and installing Nginx.
-- **Nginx Configuration**: Steps to configure and enable an Nginx site.
-- **SSL Certificate**: Instructions for setting up SSL using Certbot.
-- **Log Monitoring**: Commands to view and monitor Nginx logs in real time.
-
-
-
