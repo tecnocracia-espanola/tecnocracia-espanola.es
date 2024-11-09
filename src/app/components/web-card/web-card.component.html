@@ -1,0 +1,39 @@
+<div *ngIf="!simpleCard" class="col-12">
+  <div class="card {{cardClass}}">
+    <div *ngIf="label != '' || showLabel" class="card-header d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <ng-content select="[titleLeftNotSimpleCard]"></ng-content>
+        <div class="ml-2">
+          <b>{{ label }}</b>
+        </div>
+        <ng-content select="[titleLeftNotSimpleCard]"></ng-content>
+      </div>
+      <a *ngIf="isChevronVisible" class="pointer sm-text" (click)="toggleContentVisibility()"
+        [ngbTooltip]="isContentVisible ? 'Collapse' : 'Expand'">
+        <i class="fas fa-chevron-down chevron-animate" [class.chevron-rotate]="!isContentVisible"></i>
+      </a>
+    </div>
+    <div *ngIf="isContentVisible" class="card-body {{cardBodyClass}}" [style]="getBodyStyle()">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="simpleCard" class="card {{cardClass}}" [style]="getStyle()">
+  <div *ngIf="label != '' || showLabel" class="card-header d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <ng-content select="[titleLeftSimpleCard]"></ng-content>
+      <div class="ml-2">
+        <b>{{ label }}</b>
+      </div>
+      <ng-content select="[titleRightSimpleCard]"></ng-content>
+    </div>
+    <a *ngIf="isChevronVisible" class="pointer sm-text" (click)="toggleContentVisibility()"
+      [ngbTooltip]="isContentVisible ? 'Collapse' : 'Expand'">
+      <i class="fas fa-chevron-down chevron-animate" [class.chevron-rotate]="!isContentVisible"></i>
+    </a>
+  </div>
+  <div *ngIf="isContentVisible" class="card-body {{cardBodyClass}}" [style]="getBodyStyle()">
+    <ng-content></ng-content>
+  </div>
+</div>

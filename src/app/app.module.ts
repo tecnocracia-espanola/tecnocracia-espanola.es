@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap'; 
+import { NgbModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap'; 
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,8 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     NgbTooltipModule,
+    NgbModule,
+    ComponentsModule
   ],
   providers: []
 })

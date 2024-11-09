@@ -1,0 +1,9 @@
+<div class="card mb-3" style="width: 100%; border: none; border-bottom: 2px solid lightslategray;">
+  <img *ngIf="imageUrl" [src]="imageUrl" class="card-img-top" alt="Card Image">
+  <div class="card-body">
+    <h4 style="text-decoration: underline; color: lightslategray;" class="card-title">{{ title }}</h4>
+    <div class="card-text">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

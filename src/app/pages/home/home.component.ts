@@ -2,12 +2,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ComponentsModule } from '../../components/components.module';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   standalone: true,
-  imports: [CommonModule, NgbTooltipModule],
+  imports: [CommonModule, NgbTooltipModule, ComponentsModule],
 })
 export class HomeComponent {
 
