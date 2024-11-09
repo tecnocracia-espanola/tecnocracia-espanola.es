@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, Renderer2, RendererFactory2, RendererStyleFlags2 } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ToolsService {
   private isDesktopSubject = new BehaviorSubject<boolean>(this.checkIsDesktop());
   isDesktop$ = this.isDesktopSubject.asObservable();
 
-  constructor(rendererFactory: RendererFactory2) {
+  constructor(private http: HttpClient, rendererFactory: RendererFactory2) {
     this.renderer = rendererFactory.createRenderer(null, null);
     window.addEventListener('resize', () => this.updateIsDesktop());
   }
@@ -26,6 +27,26 @@ export class ToolsService {
   isDesktop(): boolean {
     return this.isDesktopSubject.value;
   }
+
+  //#region CALLS
+  
+    get(url: string): Observable<any> {
+      return this.http.get(url);
+    }
+  
+    post(url: string, data: any): Observable<any> {
+      return this.http.post(url, data);
+    }
+  
+    patch(url: string, data: any): Observable<any> {
+      return this.http.patch(url, data);
+    }
+    
+    delete(url: string): Observable<any> {
+      return this.http.delete(url);
+    }
+    
+    //#endregion
 
   //#region CHANGE WEB FONT
    fontOptions: string[] = [

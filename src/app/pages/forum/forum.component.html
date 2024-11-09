@@ -1,0 +1,90 @@
+<textarea class="col-12" [(ngModel)]="newEntryText" placeholder="Write your text here..."></textarea>
+<br>
+    <button [disabled]="!newEntryText" (keyup.enter)="addEntry()" style="font-size: small;" class="btn btn-sm btn-success w-100" (click)="addEntry()"><i class="fas fa-plus"></i>Añadir</button>
+<br>
+<br>
+<br>
+
+<basic-card title="Publicaciones">
+  <basic-card [title]="entry.id" *ngFor="let entry of entries" class="forum-entry">
+    <p [innerHTML]="entry.text"></p>
+    <small></small>
+    <button
+      *ngIf="entry.id != '💡 Guia de HTML. Haz click izquierdo e inspecciona la web para poder copiar, pegar y construir tu publicacion.'"
+      class="btn btn-sm btn-danger" (click)="deleteEntry(entry.id)">Delete (Created: {{ entry.timestamp | date
+      }})</button>
+
+    <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Basics Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: darkblue;
+    }
+    h2 {
+      color: darkgreen;
+    }
+    a {
+      color: darkred;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      list-style-type: square;
+    }
+    ol {
+      list-style-type: decimal;
+    }
+  </style>
+</head>
+<body>
+  <h1>Main Heading (h1)</h1>
+  <h2>Subheading (h2)</h2>
+  <h3>Another Subheading (h3)</h3>
+
+  <p>This is a simple example demonstrating how to use HTML for headers, lists, links, and colors.</p>
+
+  <h2>Unordered List</h2>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <h2>Ordered List</h2>
+  <ol>
+    <li>First item</li>
+    <li>Second item</li>
+    <li>Third item</li>
+  </ol>
+
+  <h2>Links</h2>
+  <p>Here is a link to <a href="https://www.example.com" target="_blank">Example Website</a>.</p>
+
+  <h2>Colored Text</h2>
+  <p style="color: teal;">This is a paragraph with teal-colored text.</p>
+  <p style="color: purple;">This is a paragraph with purple-colored text.</p>
+
+  <h2>Inline vs. Block Elements</h2>
+  <p>
+    This is a <span style="color: orange;">span element</span> (inline) inside a paragraph. 
+    Inline elements do not start on a new line and are part of the surrounding text.
+  </p>
+  <div style="background-color: lightgray; padding: 10px;">
+    This is a <strong>div element</strong> (block). Block elements start on a new line and take up the full width available.
+  </div>
+</body>
+</html> -->
+
+
+  </basic-card>
+</basic-card>

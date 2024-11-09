@@ -58,8 +58,9 @@ export class AppComponent implements OnInit {
   navItems = [
     { label: 'Nuestra propuesta', route: '/home' },
     { label: 'Votaciones y propuestas', route: '/election-management' },
-    { label: 'Informacion de la web', route: '/web-info' },
     { label: 'Cronologia de eventos', route: '/chronology' },
+    { label: 'Foro', route: '/forum' },
+    { label: 'Informacion de la web', route: '/web-info' },
     // { label: 'Ejemplos de interfaz', route: '/examples' }
   ];
 
@@ -70,12 +71,14 @@ export class AppComponent implements OnInit {
       this.selectedMenu = 'Nuestra propuesta';
     } else if (url.includes('/election-management')) {
       this.selectedMenu = 'Votaciones y propuestas';
+    } else if (url.includes('/forum')) {
+      this.selectedMenu = 'Forum';
+    } else if (url.includes('/chronology')) {
+      this.selectedMenu = 'Cronologia de eventos';
     } else if (url.includes('/web-info')) {
       this.selectedMenu = 'Registros de la web';
     } else if (url.includes('/examples')) {
       this.selectedMenu = 'Ejemplos de interfaz';
-    }else if (url.includes('/chronology')) {
-      this.selectedMenu = 'Cronologia de eventos';
     }
   }
   navigate(route: string) {

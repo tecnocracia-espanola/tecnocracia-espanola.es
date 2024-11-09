@@ -103,6 +103,6 @@ To push changes to the repository:
 ```bash
 git status
 git add .
-git commit -m "XXXXXXXXXXXXXXXXXXXXX Name briefly things you have changed XXXXXXXXXXXXXXXXXXXXX"
+git commit -m "XXXXXX"
 git push origin main
 ```

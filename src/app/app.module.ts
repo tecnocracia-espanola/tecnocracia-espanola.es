@@ -8,6 +8,7 @@ import { ChronologyComponent } from './pages/chronology/chronology.component';
 
 @NgModule({
   declarations: [
+    
   ],
   imports: [
     BrowserModule,

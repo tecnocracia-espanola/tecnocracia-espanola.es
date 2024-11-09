@@ -5,11 +5,13 @@ import { ExamplesComponent } from './pages/examples/examples.component';
 import { NgModule } from '@angular/core';
 import { ElectionManagementComponent } from './pages/election-management/election-management.component';
 import { ChronologyComponent } from './pages/chronology/chronology.component';
+import { ForumComponent } from './pages/forum/forum.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'election-management', component: ElectionManagementComponent },
   { path: 'chronology', component: ChronologyComponent },
+  { path: 'forum', component: ForumComponent },
   { path: 'web-info', component: WebInfoComponent },
   { path: 'examples', component: ExamplesComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
