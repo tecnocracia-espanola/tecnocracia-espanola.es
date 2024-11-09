@@ -8,7 +8,6 @@ import { ToolsService } from './services/tools.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [CommonModule, RouterModule, ComponentsModule],
 })
@@ -16,12 +15,13 @@ export class AppComponent implements OnInit {
 
   title = 'Tecnocracia Española';
   angularVersion = VERSION.full;
-  currentDate = new Date();
+  currentDate = '';
 
   constructor(public tools: ToolsService, private router: Router) { }
 
   ngOnInit(): void {
     this.updateSelectedMenu(this.router.url);
+    this.setCurrentDate();
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -34,11 +34,32 @@ export class AppComponent implements OnInit {
     this.selectedMenu = menu;
   }
 
+  onFontChange(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    const selectedFont = target.value;
+    this.tools.setFontFamily(selectedFont);
+  }
+
+  //#region CURRENT DATE
+  private setCurrentDate(): void {
+    const months = [
+      'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ];
+    const today = new Date();
+    const day = today.getDate();
+    const month = months[today.getMonth()];
+    const year = today.getFullYear();
+    this.currentDate = `${day} de ${month} de ${year}`;
+  }
+  //#region 
 
   //#region NAVIGATION 
   navItems = [
     { label: 'Nuestra propuesta', route: '/home' },
+    { label: 'Votaciones y propuestas', route: '/election-management' },
     { label: 'Informacion de la web', route: '/web-info' },
+    { label: 'Cronologia de eventos', route: '/chronology' },
     // { label: 'Ejemplos de interfaz', route: '/examples' }
   ];
 
@@ -47,10 +68,14 @@ export class AppComponent implements OnInit {
   private updateSelectedMenu(url: string) {
     if (url.includes('/home')) {
       this.selectedMenu = 'Nuestra propuesta';
+    } else if (url.includes('/election-management')) {
+      this.selectedMenu = 'Votaciones y propuestas';
     } else if (url.includes('/web-info')) {
       this.selectedMenu = 'Registros de la web';
     } else if (url.includes('/examples')) {
       this.selectedMenu = 'Ejemplos de interfaz';
+    }else if (url.includes('/chronology')) {
+      this.selectedMenu = 'Cronologia de eventos';
     }
   }
   navigate(route: string) {

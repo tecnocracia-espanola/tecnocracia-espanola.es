@@ -2,8 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'web-card',
-  templateUrl: './web-card.component.html',
-  styleUrls: ['./web-card.component.css']
+  templateUrl: './web-card.component.html'
 })
 export class WebCardComponent {
   @Input() label = '';
@@ -28,7 +27,7 @@ export class WebCardComponent {
     if (this.bodyBorder) {
       style += `border: ${this.bodyBorder};`;
     }
-    style += 'max-height: 75vh; overflow-y: auto; padding: 16px;';
+    // style += 'max-height: 50vh; overflow-y: auto; padding: 16px;';
     return style;
   }
 

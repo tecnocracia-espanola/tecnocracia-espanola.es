@@ -1,61 +1,35 @@
-@import "bootstrap/scss/bootstrap";
-
-// Aplicando una fuente moderna y elegante
-body {
-    font-family: "Roboto", Arial, sans-serif; /* Roboto es una fuente moderna y muy legible */
-    background-color: #f7f8fa; /* Un color de fondo claro y suave para no fatigar la vista */
-    color: #333333; /* Un color de texto oscuro y suave para facilitar la lectura */
-    padding: 20px; /* Ajuste de padding para un espacio adecuado */
-    line-height: 1.6; /* Espaciado de líneas para mejorar la legibilidad */
+.card-content {
+  position: relative;
+  padding: 15px;
 }
 
-// Estilizando los encabezados para destacar
-h1,
-h2,
-h3 {
-    color: #1a1a1a; /* Color oscuro para mantener contraste y destacar los encabezados */
-    margin-top: 20px; /* Espacio superior para separar secciones */
-    margin-bottom: 10px; /* Espacio inferior para separar del contenido */
+.vote-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-// Resaltando los enlaces y elementos interactivos
-a {
-    color: #007bff; /* Azul que es fácil de ver y clicable */
-    text-decoration: none;
+.voters-count {
+  color: #2c3e50;
+  font-weight: bold;
 }
 
-a:hover {
-    color: #0056b3; /* Un azul más oscuro para el efecto hover */
-    text-decoration: underline;
+.vote-status {
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  color: #fff;
 }
 
-// Listas para mejor presentación
-ul {
-    padding-left: 20px; /* Espaciado adicional para listas */
+.vote-status.open {
+  background-color: #28a745; /* Green for open */
 }
 
-// Tooltip
-[ngbTooltip] {
-    cursor: help; /* Cambia el cursor para indicar información adicional */
+.vote-status.closed {
+  background-color: #dc3545; /* Red for closed */
 }
 
-// Mejora del contraste en las listas y párrafos
-li,
-p {
-    color: #4a4a4a; /* Un tono de gris oscuro que es más fácil de leer que el negro puro */
-}
-
-.va-mid {
-    vertical-align: middle !important;
-}
-
-.tooltip {
-    text-decoration: underline;
-    cursor: pointer;
-    color: navy;
-}
-
-.tooltip:hover {
-    color: #0056b3; // Darker blue for hover effect
-    text-decoration: none; // Remove underline on hover
+i {
+  padding-right: 5px;
 }

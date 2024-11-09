@@ -14,7 +14,7 @@ import { BasicCardComponent } from './basic-card/basic-card.component';
   ],
   declarations: [
     WebCardComponent,
-    BasicCardComponent
+    BasicCardComponent,
   ],
   exports: [
     WebCardComponent,

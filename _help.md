@@ -93,6 +93,20 @@ tail -f /var/log/nginx/tecnocracia-espanola.access.log
 ```
 - **Explanation**: `tail -f` continuously displays the latest log entries, useful for debugging and monitoring real-time traffic.
 
+## 9. GIT
+To clone a repository:
+``` bash
+git clone https://github.com/tecnocracia-espanola/tecnocracia-espanola.es.git
+```
+
+To push changes to the repository:
+```bash
+git status
+git add .
+git commit -m "Name briefly things you have changed"
+git push origin main
+```
+
 <br>
 <br>
 <br>
@@ -107,3 +121,6 @@ tail -f /var/log/nginx/tecnocracia-espanola.access.log
 - **Nginx Configuration**: Steps to configure and enable an Nginx site.
 - **SSL Certificate**: Instructions for setting up SSL using Certbot.
 - **Log Monitoring**: Commands to view and monitor Nginx logs in real time.
+
+
+

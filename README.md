@@ -8,6 +8,7 @@ Antes de comenzar, asegúrate de tener instalados los siguientes componentes:
 
 - [Node.js y npm](https://nodejs.org/)
 - [Angular CLI](https://angular.dev/cli)
+- [Visual Studio Code](https://code.visualstudio.com/docs/setup/windows) es el editor de codigo que recomiendo ya que es el que utilizo para el front end.
 
 ## Descarga del Proyecto
 
@@ -38,7 +39,7 @@ Para ejecutar el servidor de desarrollo:
 1. Inicia el servidor:
 
     ```bash
-    ng serve
+    npm run start
     ```
 
 2. Abre tu navegador y navega a:
