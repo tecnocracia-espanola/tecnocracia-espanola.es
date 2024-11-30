@@ -1,0 +1,22 @@
+{
+    "email": "email@ejemplo.com",
+    "password": "!3mail@e1emplo.c0m_",
+    "Description": "-",
+    "Mobile": "-",
+    "Studies": "-",
+    "Location": "-",
+    "Skills": ["-"],
+    "CommunityContribution": "-",
+    "Customizations": {
+         "Color1": "-",
+         "Color2": "-",
+         "Style1": "-",
+         "Style2": "-",
+         "Margins1": "-",
+         "Margins2": "-",
+         "Description": "-",
+         "TextSpace1": "-",
+         "TextSpace2": "-",
+         "WebFont": "-"
+    }
+}

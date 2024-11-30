@@ -23,7 +23,7 @@ export class ForumComponent implements OnInit, AfterViewInit {
   newEntryText: any;
   maxEntries: number = 100;
   // jsonFilePath: string = 'assets/forumData.json';
-  jsonFilePath: string = 'http://localhost:3000/forumEntries';
+  jsonFilePath: string = '/api/forumEntries';
 
   constructor(private toolsService: ToolsService, private http: HttpClient) { }
 

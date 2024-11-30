@@ -1,6 +1,8 @@
-<textarea class="col-12" [(ngModel)]="newEntryText" placeholder="Write your text here..."></textarea>
+
+<textarea class="col-12" [(ngModel)]="newEntryText" placeholder="🔨 En desarrollo..."></textarea>
 <br>
-    <button [disabled]="!newEntryText" (keyup.enter)="addEntry()" style="font-size: small;" class="btn btn-sm btn-success w-100" (click)="addEntry()"><i class="fas fa-plus"></i>Añadir</button>
+<button [disabled]="!newEntryText" (keyup.enter)="addEntry()" style="font-size: small;"
+  class="btn btn-sm btn-success w-100" (click)="addEntry()"><i class="fas fa-plus"></i>Añadir</button>
 <br>
 <br>
 <br>
@@ -11,8 +13,8 @@
     <small></small>
     <button
       *ngIf="entry.id != '💡 Guia de HTML. Haz click izquierdo e inspecciona la web para poder copiar, pegar y construir tu publicacion.'"
-      class="btn btn-sm btn-danger" (click)="deleteEntry(entry.id)">Delete (Created: {{ entry.timestamp | date
-      }})</button>
+      class="btn btn-sm btn-danger" (click)="deleteEntry(entry.id)">Delete (Created: {{ entry.timestamp | date }})
+    </button>
 
     <!-- <!DOCTYPE html>
 <html lang="en">

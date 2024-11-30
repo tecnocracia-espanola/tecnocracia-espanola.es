@@ -2,9 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { NgbModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { ComponentsModule } from './components/components.module';
-import ApexCharts from 'apexcharts';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { ChronologyComponent } from './pages/chronology/chronology.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
+import { JwtModule } from '@auth0/angular-jwt';
+import { environment } from '../environments/environment.prod';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -15,10 +21,23 @@ import { ChronologyComponent } from './pages/chronology/chronology.component';
     NgbTooltipModule,
     NgbModule,
     ComponentsModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.apiUrl], 
+        disallowedRoutes: [environment.apiUrl + '/Auth/login']
+      }
+    })
   ],
-  providers: [],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    // other providers
+  ],  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
 })
 

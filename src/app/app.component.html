@@ -1,40 +1,48 @@
 <header>
-  <div class="alert alert-primary badge text-black w-100">
-    <div class="card-body">
-      📢 El logo y el título son algo provisional pendiente de votacion <br> <br>
-      📢 Toda la información y datos presentada en este sitio web a día de hoy {{ currentDate }}, <br> es susceptible a
-      cambio hasta que se supere la primera etapa del proyecto.
+  <!-- Button and Alert Container -->
+  <div class="position-fixed top-0 end-0 m-1" style="z-index: 1000;">
+
+    <span [ngClass]="{ '': !showAlert, 'badge alert-primary': 'badge alert-primary' }" (click)="showAlert = !showAlert"
+      style="border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; cursor: pointer;">
+      📢
+    </span>
+
+    <div *ngIf="showAlert" class="alert badge alert-primary mt-2 shadow"
+      style="position: absolute; top: 25px; right: 0; width: 250px; text-align: left;">
+      <div class="card-body">El logo y el título son algo provisional pendiente de votación<br><br>Toda la información y
+        datos presentada en este sitio web a día de hoy {{ currentDate }}, es susceptible a
+        cambio hasta que se supere la primera etapa del proyecto.
+      </div>
     </div>
   </div>
 
   <div class="d-flex flex-column align-items-center m-3">
     <div class="d-flex align-items-center">
       <img src="../assets/logo.svg" alt="Logo" style="width: 25px; height: auto; margin-right: 10px;">
-      <h4 style="margin: 0;">{{ title }}</h4>
+      <h4 style="margin: 0; cursor: pointer;" (click)="changeTitle()">{{ title }}</h4>
     </div>
   </div>
-
-
-  <!-- HERE CORUSEL WITH NEW PROPORSALS TO SEE HOW THEY LOOK -->
-
 </header>
 
 <nav class="navbar navbar-light bg-dark" [ngClass]="{'navbar-expand-lg': tools.isDesktop(), '': !tools.isDesktop()}">
   <div class="container-fluid">
-    <div *ngIf="tools.isDesktop()">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" *ngFor="let item of navItems">
-          <button
-            [ngClass]="isActive(item.route) ? 'm-1 btn btn-sm btn-success text-white' : 'm-1 btn btn-sm btn-secondary text-white'"
-            (click)="navigate(item.route)">
-            {{ item.label }}
-          </button>
-        </li>
-      </ul>
+
+    <!-- GENERAL NAV -->
+    <div *ngIf="tools.isDesktop()" class="w-100">
+      <div class="d-flex w-100">
+        <ul class="navbar-nav d-flex flex-row w-100 mb-2 mb-lg-0">
+          <li class="nav-item flex-grow-1" *ngFor="let item of navItems">
+            <button class="btn btn-sm text-white w-100 m-1"
+              [ngClass]="isActive(item.route) ? 'btn-success' : 'btn-secondary'" (click)="navigate(item.route)">
+              {{ item.label }}
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <div *ngIf="!tools.isDesktop()" class="dropdown w-100 m-1">
-      <button class="m-1 btn btn-sm btn-success dropdown-toggle w-100" type="button" id="dropdownMenuButton"
+      <button class="btn btn-sm btn-success dropdown-toggle w-100" type="button" id="dropdownMenuButton"
         data-bs-toggle="dropdown" aria-expanded="false">
         {{ selectedMenu }}
       </button>
@@ -46,23 +54,140 @@
         </li>
       </ul>
     </div>
+
+    <div *ngIf="!authService.isAuthenticated(); else loggedIn">
+      <input type="email" [(ngModel)]="email" placeholder="Email" class="form-control mb-2" />
+      <input type="password" [(ngModel)]="password" placeholder="Password" class="form-control mb-2" />
+      <button class="btn btn-primary" (click)="login()">Login</button>
+    </div>
+
+
   </div>
 </nav>
+
+<ng-template #loggedIn>
+  <button class="btn btn-danger" (click)="logout()">Logout</button>
+</ng-template>
+
+<nav #loggedIn *ngIf="authService.isAuthenticated();" style="position: sticky; color: azure;"
+  [ngClass]="{'navbar-expand-lg': tools.isDesktop(), '': !tools.isDesktop()}">
+
+  <ng-container *ngIf="tools.isDesktop()">
+    <button class="btn btn-sm w-100 btn-success mb-2" [disabled]="true" (click)="navigate('item.route')">
+      Logged in as: {{authService.currentUser}}
+    </button>
+    <div class="btn-group" style="filter: sepia()">
+      <button *ngFor="let item of navItems" class="btn btn-sm text-white"
+        [ngClass]="isActive(item.route) ? 'btn-success' : 'btn-secondary'" (click)="navigate(item.route)">
+        {{ item.label }}
+      </button>
+    </div>
+  </ng-container>
+
+  <div *ngIf="!tools.isDesktop()" class="dropdown w-100 m-1">
+
+    <button class="btn btn-sm w-100 btn-success mb-2" [disabled]="true" (click)="navigate('item.route')">
+      Logged in as: {{authService.currentUser}}
+    </button>
+
+    <button style="filter: sepia()" class="btn btn-sm btn-success dropdown-toggle w-100" type="button"
+      id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+      {{ selectedMenu }}
+    </button>
+    <ul class="dropdown-menu w-100 text-center" aria-labelledby="dropdownMenuButton">
+      <li *ngFor="let item of navItems" style="cursor: pointer;">
+        <a class="dropdown-item" (click)="selectMenu(item.label); navigate(item.route)" routerLinkActive="active">
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <web-card>
   <router-outlet></router-outlet>
 </web-card>
 
-<footer>
-  <div class="alert text-white badge bg-secondary text-black w-100">
-    <div class="card-body">
-      Organización y Transparencia<br>
-      La transparencia y el diálogo son pilares de nuestra idea. <br>
-      <a  class="text-white" href="https://github.com/tecnocracia-espanola/tecnocracia-espanola.es" target="_blank">Todo el código está
-        disponible en nuestro GitHub</a>
-    </div>
-    <br>
-    <select (change)="onFontChange($event)">
+
+<footer class="alert text-center bg-white w-100">
+  <div class="card-body">
+    <p class="mb-2">
+      Organización y Transparencia: La transparencia y el diálogo son pilares de nuestra idea.
+      <a href="https://github.com/tecnocracia-espanola/tecnocracia-espanola.es" target="_blank">
+        Todo el código está disponible en nuestro GitHub
+      </a>
+    </p>
+
+    <ng-template #avisoLegalTooltip>
+      Información sobre quién está detrás del proyecto y el propósito del sitio web.
+    </ng-template>
+
+    <ng-template #politicaPrivacidadTooltip>
+      Detalles sobre la recopilación y uso de datos personales, así como los derechos de los usuarios.
+    </ng-template>
+
+    <ng-template #terminosCondicionesTooltip>
+      Normas para el uso del sitio web y los derechos sobre el contenido compartido.
+    </ng-template>
+
+    <ng-template #politicaCookiesTooltip>
+      Información sobre las cookies utilizadas en el sitio y cómo gestionarlas.
+    </ng-template>
+
+    <ng-template #declaracionTransparenciaTooltip>
+      Explicación sobre cómo se gestionan el código, las decisiones y los fondos del proyecto.
+    </ng-template>
+
+    <ng-template #condicionesParticipacionTooltip>
+      Normas y derechos para las personas que colaboran con el proyecto.
+    </ng-template>
+
+    <ng-template #clausulaModificacionesTooltip>
+      Aviso de que las políticas pueden cambiar y cómo se notifican las actualizaciones.
+    </ng-template>
+
+    <nav class="footer-nav">
+
+      <ul class="list-unstyled d-flex flex-wrap justify-content-around mb-2">
+        <li class="m-2">
+          <a [routerLink]="'/privacy-policy'" [ngbTooltip]="politicaPrivacidadTooltip">
+            Política de Privacidad
+          </a>
+        </li>
+        <li class="m-2">
+          <a [routerLink]="'/terms-conditions'" [ngbTooltip]="terminosCondicionesTooltip">
+            Términos y Condiciones de Uso
+          </a>
+        </li>
+        <li class="m-2">
+          <a [routerLink]="'/cookie-policy'" [ngbTooltip]="politicaCookiesTooltip">
+            Política de Cookies
+          </a>
+        </li>
+        <li class="m-2">
+          <a [routerLink]="'/transparency-statement'" [ngbTooltip]="declaracionTransparenciaTooltip">
+            Declaración de Transparencia
+          </a>
+        </li>
+        <li class="m-2">
+          <a [routerLink]="'/participation-terms'" [ngbTooltip]="condicionesParticipacionTooltip">
+            Condiciones de Participación
+          </a>
+        </li>
+        <li class="m-2">
+          <a [routerLink]="'/modification-clause'" [ngbTooltip]="clausulaModificacionesTooltip">
+            Cláusula de Modificaciones
+          </a>
+        </li>
+      </ul>
+
+
+    </nav>
+
+    <select class="form-select m-2 text-center" style="font-size: 0.875rem; padding: 0.00rem 0.0rem;"
+      (change)="onFontChange($event)" [value]="tools.selectedFont">
       <option *ngFor="let font of tools.fontOptions" [value]="font">{{ font }}</option>
     </select>
+
   </div>
 </footer>

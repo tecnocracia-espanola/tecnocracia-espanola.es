@@ -13,6 +13,7 @@ export class ToolsService {
   constructor(private http: HttpClient, rendererFactory: RendererFactory2) {
     this.renderer = rendererFactory.createRenderer(null, null);
     window.addEventListener('resize', () => this.updateIsDesktop());
+    this.setFontFamily(this.selectedFont);
   }
 
   private checkIsDesktop(): boolean {
@@ -49,11 +50,13 @@ export class ToolsService {
     //#endregion
 
   //#region CHANGE WEB FONT
-   fontOptions: string[] = [
+  selectedFont: string = 'Quicksand, sans-serif';
+
+  fontOptions: string[] = [
+    'Quicksand, sans-serif',
     'Lato, sans-serif',
     '"PT Sans", "PT Serif", sans-serif',
     '"Open Sans", sans-serif',
-    'Quicksand, sans-serif',
     'Georgia, serif',
     'Arial, Calibri, Verdana, sans-serif',
     'Helvetica, Arial, sans-serif',

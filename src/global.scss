@@ -1,3 +1,8 @@
+* {
+  font-weight: 600 !important;
+  color: rgb(83, 83, 83);
+}
+
 .card-content {
   position: relative;
   padding: 15px;
@@ -32,4 +37,66 @@
 
 i {
   padding-right: 5px;
+}
+
+button {
+  font-weight: 600 !important;
+  font-variant: small-caps;
+  letter-spacing: 0.5px;
+  word-spacing: 1px;
+}
+
+.badge {
+  word-wrap: break-word;
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+}
+
+.basic-card-style {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #2c3e50;
+}
+
+.basic-card-title {
+  color: #2c3e50;
+}
+
+.vote-info-container {
+  width: 100%;
+}
+
+.vote-info-container.half-width {
+  width: 50%;
+}
+
+.btn-group-xs .btn {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+p {
+  padding: 10px;
+}
+
+
+ul {
+  padding: 10px;
+}
+li {
+  padding: 5px;
+}
+
+strong {
+  color: rgb(35, 70, 35);
+  font-weight: bold;
+  // text-decoration: underline;
+}
+
+// body > ul > li {
+//   padding-bottom: 15px;
+// }
+
+a {
+  color: rgb(75, 153, 75);
 }
