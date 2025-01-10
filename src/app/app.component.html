@@ -27,47 +27,69 @@
 <nav class="navbar navbar-light bg-dark" [ngClass]="{'navbar-expand-lg': tools.isDesktop(), '': !tools.isDesktop()}">
   <div class="container-fluid">
 
-    <!-- GENERAL NAV -->
     <div *ngIf="tools.isDesktop()" class="w-100">
-      <div class="d-flex w-100">
-        <ul class="navbar-nav d-flex flex-row w-100 mb-2 mb-lg-0">
-          <li class="nav-item flex-grow-1" *ngFor="let item of navItems">
-            <button class="btn btn-sm text-white w-100 m-1"
-              [ngClass]="isActive(item.route) ? 'btn-success' : 'btn-secondary'" (click)="navigate(item.route)">
-              {{ item.label }}
+      <div class="d-flex w-100 justify-content-between">
+        <!-- Navigation Buttons -->
+
+        <div class="btn-group flex-grow-1" aria-label="Navigation Buttons">
+          <button *ngFor="let item of navItems; let isLast = last" class="btn btn-sm text-white w-100"
+            [ngClass]="{'btn-success': isActive(item.route),'btn-secondary': !isActive(item.route),'me-4': isLast }"
+            (click)="navigate(item.route)">
+            {{ item.label }}
+          </button>
+        </div>
+
+
+        <!-- Login/Register Buttons -->
+        <div class="btn-group" aria-label="Login/Register Buttons">
+          <ng-container *ngIf="!authService.isAuthenticated(); else loggedIn">
+            <button class="btn btn-sm btn-outline-info" (click)="openModal()">
+              Acceso
             </button>
-          </li>
-        </ul>
+            <button class="btn btn-sm btn-outline-success" (click)="openModal()">
+              Registro
+            </button>
+          </ng-container>
+          <ng-template #loggedIn>
+            <button class="btn btn-danger" (click)="logout()">Logout</button>
+          </ng-template>
+        </div>
       </div>
     </div>
 
-    <div *ngIf="!tools.isDesktop()" class="dropdown w-100 m-1">
-      <button class="btn btn-sm btn-success dropdown-toggle w-100" type="button" id="dropdownMenuButton"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        {{ selectedMenu }}
-      </button>
-      <ul class="dropdown-menu w-100 text-center" aria-labelledby="dropdownMenuButton">
-        <li *ngFor="let item of navItems" style="cursor: pointer;">
-          <a class="dropdown-item" (click)="selectMenu(item.label); navigate(item.route)" routerLinkActive="active">
-            {{ item.label }}
-          </a>
-        </li>
-      </ul>
+
+
+    <div *ngIf="!tools.isDesktop()" class="d-flex w-100 justify-content-between align-items-center p-2">
+      <!-- Dropdown Button -->
+      <div class="dropdown">
+        <button class="btn btn-sm btn-success dropdown-toggle" type="button" id="dropdownMenuButton"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          {{ selectedMenu }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li *ngFor="let item of navItems" style="cursor: pointer;">
+            <a class="dropdown-item" (click)="selectMenu(item.label); navigate(item.route)" routerLinkActive="active">
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Authentication Buttons -->
+      <div class="btn-group">
+        <button class="btn btn-sm btn-outline-info" (click)="openModal()">Acceso</button>
+        <button class="btn btn-sm btn-outline-success" (click)="openModal()">Registro</button>
+        <ng-template #loggedIn>
+          <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </ng-template>
+      </div>
     </div>
 
-    <div *ngIf="!authService.isAuthenticated(); else loggedIn">
-      <input type="email" [(ngModel)]="email" placeholder="Email" class="form-control mb-2" />
-      <input type="password" [(ngModel)]="password" placeholder="Password" class="form-control mb-2" />
-      <button class="btn btn-primary" (click)="login()">Login</button>
-    </div>
 
 
   </div>
 </nav>
 
-<ng-template #loggedIn>
-  <button class="btn btn-danger" (click)="logout()">Logout</button>
-</ng-template>
 
 <nav #loggedIn *ngIf="authService.isAuthenticated();" style="position: sticky; color: azure;"
   [ngClass]="{'navbar-expand-lg': tools.isDesktop(), '': !tools.isDesktop()}">
@@ -191,3 +213,16 @@
 
   </div>
 </footer>
+
+<modal
+  #modal
+  [title]="'Warning!'"
+  [size]="'sm'"
+  [textOk]="'Restart system now'"
+  [cssOk]="'warning'"
+  [hasOk]="true"
+  [hasCancel]="true"
+  (onOk)="true"
+  (onCancel)="modal.close()">
+  <p class="text-center">Are you sure you want to restart the system?</p>
+</modal>

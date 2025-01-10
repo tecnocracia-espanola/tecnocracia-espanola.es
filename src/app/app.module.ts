@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { NgbModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { ComponentsModule } from './components/components.module';
-import { NgApexchartsModule } from 'ng-apexcharts';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -14,14 +13,13 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    
   ],
   imports: [
     BrowserModule,
     NgbTooltipModule,
     NgbModule,
     ComponentsModule,
-    NgApexchartsModule,
+    // NgApexchartsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

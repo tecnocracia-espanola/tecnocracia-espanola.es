@@ -11,7 +11,7 @@ import { ModalComponent } from './modal/modal.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
   ],
   declarations: [
     WebCardComponent,

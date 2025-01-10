@@ -1,21 +1,19 @@
-<div id="app-modal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">{{ title }}</h5>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
-      </div>
-      <div class="modal-body">
-        <ng-content></ng-content>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModal()">
-          {{ cancelButtonText }}
-        </button>
-        <button type="button" class="btn btn-primary" (click)="confirmAction()">
-          {{ okButtonText }}
-        </button>
-      </div>
-    </div>
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">{{ title }}</h4>
+    <button *ngIf="hasClose" type="button" class="btn-close" aria-label="Close"
+      (click)="modal.dismiss('close')"></button>
   </div>
-</div>
+  <div class="modal-body">
+    <ng-content></ng-content>
+  </div>
+  <div class="modal-footer" *ngIf="hasOk || hasCancel">
+    <button [disabled]="okDisabled" *ngIf="hasOk" type="button" class="btn btn-{{ cssOk }}" (click)="onOkClick()">
+      {{ textOk }}
+    </button>
+    <button [disabled]="cancelDisabled" *ngIf="hasCancel" type="button" class="btn btn-{{ cssCancel }}"
+      (click)="onCancelClick()">
+      {{ textCancel }}
+    </button>
+  </div>
+</ng-template>

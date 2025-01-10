@@ -3,11 +3,6 @@
   color: rgb(83, 83, 83);
 }
 
-.card-content {
-  position: relative;
-  padding: 15px;
-}
-
 .vote-info {
   display: flex;
   justify-content: space-between;
@@ -50,16 +45,6 @@ button {
   word-wrap: break-word;
   white-space: -moz-pre-wrap;
   white-space: pre-wrap;
-}
-
-.basic-card-style {
-  width: 100%;
-  border: none;
-  border-bottom: 2px solid #2c3e50;
-}
-
-.basic-card-title {
-  color: #2c3e50;
 }
 
 .vote-info-container {

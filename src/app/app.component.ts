@@ -1,18 +1,16 @@
 // app.component.ts
-import { Component, OnInit, VERSION } from '@angular/core';
+import { Component, OnInit, VERSION, ViewChild } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { ComponentsModule } from './components/components.module';
 import { ToolsService } from './services/tools.service';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './services/auth.service';
-import { FormsModule } from '@angular/forms';
+import { sharedImports } from './app-setup';
+import { ModalComponent } from './components/modal/modal.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: true,
-  imports: [CommonModule, RouterModule, ComponentsModule, NgbTooltipModule, FormsModule],
+  imports: [sharedImports],
 })
 export class AppComponent implements OnInit {
   tooltipContent: string = '🔨 En desarrollo...<br>Explicación sobre cómo se gestionan el código, las decisiones y los fondos del proyecto.';
@@ -158,9 +156,6 @@ export class AppComponent implements OnInit {
     }
   }
 
-  email: string = '';
-  password: string = '';
-
   // Method to handle login
   login(): void {
     this.authService.login(this.email, this.password).subscribe({
@@ -173,5 +168,26 @@ export class AppComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     alert('Logged out successfully!');
+  }
+
+
+  @ViewChild('modal') modal!: ModalComponent;
+
+  email: string = '';
+  password: string = '';
+
+  ngAfterViewInit(): void {}
+
+  openModal(): void {
+    this.modal.open();
+  }
+
+  onConfirm(): void {
+    alert(`Email: ${this.email}\nPassword: ${this.password}`);
+    this.modal.close();
+  }
+
+  onCancel(): void {
+    this.modal.close();
   }
 }

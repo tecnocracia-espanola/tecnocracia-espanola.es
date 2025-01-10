@@ -1,45 +1,79 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, OnDestroy } from '@angular/core';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-modal',
+  selector: 'modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent {
+export class ModalComponent implements OnDestroy {
+  @ViewChild('modal') modal: any;
+
   @Input() title: string = 'Modal Title';
-  @Input() okButtonText: string = 'OK';
-  @Input() cancelButtonText: string = 'Cancel';
-  @Input() preventCancelClose: boolean = false; // If true, cancel won't close the modal
-  @Output() okAction = new EventEmitter<void>();
-  @Output() cancelAction = new EventEmitter<void>();
+  @Input() size: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' = 'lg';
+  @Input() hasClose: boolean = true;
+  @Input() backdropClose: boolean = true;
+  @Input() autoClose: boolean = true;
 
-  closeModal() {
-    // Emit cancel action and only close the modal if preventCancelClose is false
-    this.cancelAction.emit();
-    if (!this.preventCancelClose) {
-      this.hide();
+  // OK Button
+  @Input() hasOk: boolean = true;
+  @Input() okDisabled: boolean = false;
+  @Input() cssOk: string = 'success';
+  @Input() textOk: string = 'Ok';
+  @Output() onOk: EventEmitter<void> = new EventEmitter<void>();
+
+  // Cancel Button
+  @Input() hasCancel: boolean = true;
+  @Input() cancelDisabled: boolean = false;
+  @Input() cssCancel: string = 'secondary';
+  @Input() textCancel: string = 'Cancel';
+  @Output() onCancel: EventEmitter<void> = new EventEmitter<void>();
+
+  cancelled = true;
+
+  constructor(private modalService: NgbModal) {}
+
+  ngOnDestroy(): void {
+    this.modalService.dismissAll();
+  }
+
+  open(): void {
+    this.cancelled = false;
+    const modalOptions: NgbModalOptions = {
+      size: this.parseSize(this.size),
+      ariaLabelledBy: 'modal-basic-title',
+      backdrop: this.backdropClose ? true : 'static',
+      keyboard: this.backdropClose
+    };
+
+    this.modalService.open(this.modal, modalOptions).result.catch(() => {
+      this.onCancelClick();
+    });
+  }
+
+  close(): void {
+    this.modalService.dismissAll();
+  }
+
+  onOkClick(): void {
+    this.onOk.emit();
+    if (this.autoClose) {
+      this.close();
     }
   }
 
-  confirmAction() {
-    // Emit OK action
-    this.okAction.emit();
-    this.hide();
+  onCancelClick(): void {
+    this.cancelled = true;
+    this.onCancel.emit();
+    this.close();
   }
 
-  hide() {
-    // Logic to hide the modal (if using Bootstrap or other framework)
-    const modalElement = document.getElementById('app-modal');
-    if (modalElement) {
-      modalElement.style.display = 'none';
-    }
-  }
-
-  show() {
-    // Logic to show the modal
-    const modalElement = document.getElementById('app-modal');
-    if (modalElement) {
-      modalElement.style.display = 'block';
+  private parseSize(size: string): string {
+    switch (size) {
+      case 'sm': return 'sm';
+      case 'xl': return 'xl';
+      case 'xxl': return 'xxl';
+      default: return 'lg';
     }
   }
 }

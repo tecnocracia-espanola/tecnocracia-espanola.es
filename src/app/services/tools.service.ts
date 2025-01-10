@@ -17,7 +17,7 @@ export class ToolsService {
   }
 
   private checkIsDesktop(): boolean {
-    return window.innerWidth >= 1024;
+    return window.innerWidth >= 485;
   }
 
   private updateIsDesktop(): void {
